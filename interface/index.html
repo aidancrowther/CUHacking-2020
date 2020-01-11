@@ -1,0 +1,19 @@
+<html>
+<head></head>
+<body onload="InitThis();">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="client.js"></script>
+    <div align="center">
+        <canvas id="myCanvas" width="280" height="280" style="border:2px solid black"></canvas>
+        <br /><br />
+        <button onclick="javascript:clearArea();return false;">Clear Area</button>
+        <button onclick="javascript:sendNum();return false;">Get Result</button>
+        </select>
+        <br>
+        <p>Guess: <div id="result"></div></p>
+    </div>
+    <div style="height: 300px; width: 300px;">
+        <div id="your-circle"></div>
+    </div>
+</body>
+</html>

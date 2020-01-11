@@ -1,0 +1,26 @@
+{
+  "name": "mnist_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^0.2.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "keras-js": "^1.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aidancrowther/MNIST_JS.git"
+  },
+  "author": "Aidan Crowther",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aidancrowther/MNIST_JS/issues"
+  },
+  "homepage": "https://github.com/aidancrowther/MNIST_JS#readme"
+}
