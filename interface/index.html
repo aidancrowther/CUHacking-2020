@@ -12,30 +12,30 @@
                 width: 400px;
                 border: 3px dashed darkgray;
                 background-color: #fafafa;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                color: darkgray;
+
                 font-family: "Calibri";
                 font-size: 30px;
                 text-align: center;
                 vertical-align: middle;
-                padding-top: 170px;
-                color: darkgray;
                 cursor: pointer;
                 margin-top: 50px;
                 margin-bottom: 50px;
-                position: relative;
-                overflow: hidden;
             }
         </style>
     </head>
-    <body onload="init();">
+    <body>
         <div align="center">
-            <label for="imageField" id="imageContainer">
-                <input type="file" id="imageField" accept="image/png" hidden=true>
-                Click here to upload...
-            </label>
+            <img alt="Click here to upload..." id="imageContainer">
             <p id="error" class="hide"></p>
             <p id="success" class="hide"></p>
-            <button class="btn btn-lg btn-primary" onclick="uploadImage()">Upload</button>
-            <button class="btn btn-lg btn-danger" onclick="clearImage()">Clear</button>
+            <input class="btn btn-lg btn-primary" type="file" id="imageField" accept="image/png">
+            <button id="clear" class="btn btn-lg btn-danger" onclick="clearImage()" disabled=true>Clear</button>
         </div>
     </body>
 </html>
