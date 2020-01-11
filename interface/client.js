@@ -2,6 +2,18 @@ var mousePressed = false;
 var lastX, lastY;
 var ctx;
 
+function init() {
+
+}
+
+function uploadImage() {
+    
+}
+
+function clearImage() {
+
+}
+
 function InitThis() {
     ctx = document.getElementById('myCanvas').getContext("2d");
 
