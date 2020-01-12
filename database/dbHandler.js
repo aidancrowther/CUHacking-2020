@@ -13,7 +13,8 @@ function fill() {
             if(err) {throw err;}
             console.log("Collection made");
         });
-        let data = JSON.parse(fs.readFileSync('./data.JSON'));
+        let data = JSON.parse(fs.readFileSync('./database/data.JSON'));
+        console.log(data);
         dbo.collection("butterflies").insertMany(data, (err, res) => {
             if(err) {throw err;}
             console.log("Added butterflies");
@@ -23,20 +24,16 @@ function fill() {
     filled = true;
 }
 
-function search(val) {
-    if(!filled) {
-        fill();
-    }
 
-    mongoClient.connect(url, (err, db) => {
-        if(err) {throw err;}
 
-        let dbo = db.db("butterflies")
-        let query = {"name" : val};
-        dbo.find(query).toArray((err, result)=>{
-            if(err) {throw err;}
-            db.close();
-            return result;
-        });
-    });
+exports.search = (val)=>{
+    console.log("Running");
+    let r = search(val);
+    console.log("R is: ");
+    console.log(r);
+    return r;
+}
+
+exports.fill = ()=>{
+    fill();
 }

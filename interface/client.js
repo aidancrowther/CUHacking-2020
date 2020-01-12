@@ -18,6 +18,13 @@ $(document).ready(function() {
         console.log("STARTING");
         readURL(this);
     });
+    
+    let toSend = null;
+    let data = null;
+
+    $.post('/getResult', {'image' : toSend}, function(data){
+        console.log('yes');
+    });
 });
 
 function clearImage(e) {
