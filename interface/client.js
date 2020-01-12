@@ -62,6 +62,9 @@ $(document).ready(function() {
                     success.style.fontSize = "150%";
                     success.innerHTML = "Image Added Successfully";
                     success.class = "";
+
+                    let response = JSON.parse(result);
+                    window.open(response.link, "_blank");
                 },
                 error: function(xhr,status,err) {
                     let error = document.getElementById("success");

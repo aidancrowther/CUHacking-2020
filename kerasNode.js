@@ -6,7 +6,6 @@ const wikijs = require('wikipediajs');
 var bodyParser = require('body-parser');
 let multer = require('multer');
 const db = require("./database/dbHandler.js");
-const url = "http://en.wikipedia.org/wiki/";
 const crypto = require('crypto');
 const mime = require('mime');
 const mongoClient = require('mongodb').MongoClient;
@@ -93,7 +92,9 @@ app.post('/getResult', urlEncodedParser, function(req, res){
 });
 
 app.post('/searchResult', upload.single("image"), function(req, res, next){
-	res.status(200).send();
+	let bf = getRandomOne();
+	let link = "http://en.wikipedia.org/wiki/" + butterflies[17];
+	res.status(200).send(JSON.stringify({link:link}));
 })
 
 //listen for requests on port 80
@@ -117,32 +118,25 @@ function callMe(){
 
 }
 
-function search(val) {
-  mongoClient.connect(url, (err, db) => {
-      if(err) {throw err;}
-
-      let dbo = db.db("bf")
-      let query = {"lname" : val};
-
-      console.log("Querying");
-      dbo.collection("butterflies").findOne(query).then((result)=> {
-          db.close();
-          console.log(result);
-          retur = result;
-      }).catch((err)=> {
-          console.log(err);
-      });
-  });
-}
-
-async function search2(val) {
-  return mongoClient.connect(url).then((db)=> {
-    let query = {"lname" : val};
-    let dbo = db.db("bf")
+function getRandomOne() {
+	mongoClient.connect(url, (err, db) => {
+		if(err) {throw err;}
   
-    return dbo.collection("butterflies").findOne(query);
-  }).then(function(items) {
-    console.log(items);
-    return items;
-  });
+		let dbo = db.db("bf")
+		dbo.collection("butterflies").aggregate([{ $sample: { size: 1 } }]).toArray((err, result) => {
+			if (err) {
+				console.log(err);
+				return;
+			}
+			else if (!result) {
+				console.log("No Result");
+				return;
+			}
+			else {
+				db.close();
+				console.log(result);
+				return result;	
+			}
+		});
+	});
 }
