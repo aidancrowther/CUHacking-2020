@@ -1,6 +1,6 @@
 const tf = require("@tensorflow/tfjs");
 const tfn = require("@tensorflow/tfjs-node");
-const handler = tfn.io.fileSystem("./model/model.json");
+const handler = tfn.io.fileSystem("./keras_model/model.json");
 const express = require('express');
 const wikijs = require('wikipediajs');
 var bodyParser = require('body-parser');
@@ -67,7 +67,7 @@ app.post('/getResult', urlEncodedParser, function(req, res){
   //db.fill();
   /*
   let image = req.body['image'].map(Number);
-  let imgTensor = tf.tensor(image, [1, 28, 28, 1]);
+  let imgTensor = tf.tensor(image, [1, 400, 400, 3]);
   let pred = butterflies[model.predict(imgTensor).dataSync()];
   */
 

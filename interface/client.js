@@ -24,8 +24,8 @@ $(document).ready(function() {
             height: 400,
         },
         boundary: {
-            width: 600,
-            height: 600,
+            width: 500,
+            height: 500,
         },
         showZoomer: false,
         enableOrientation: true
@@ -34,6 +34,8 @@ $(document).ready(function() {
 
     $('#imageField').on('change', function () { 
         readURL(this);
+        let clear = document.getElementById("clear-dis");
+        clear.id = "clear-ena";
     });
     $('#upload').on("click", function(ev) {
         upload.croppie('result', {
@@ -43,8 +45,8 @@ $(document).ready(function() {
             $('#item-img-output').attr('src', resp);
             $('#imagebase64').val(resp);
             console.log(resp);
-            let clear = document.getElementById("clear-dis");
-            clear.id = "clear-ena";
+            let clear = document.getElementById("clear-ena");
+            clear.id = "clear-dis";
     
             let formData = new FormData();
             formData.append("image", resp);
@@ -83,15 +85,12 @@ $(document).ready(function() {
 });
 
 function clearImage() {
-    let imageContainer = document.getElementById('imageContainer');
+    let imageOutput = document.getElementById('item-img-output');
 
-    if(imageContainer) {
-        let parent = imageContainer.parentNode; 
-        parent.removeChild(imageContainer);
-        let nIC = document.createElement("img");
-        nIC.alt = "Click here to upload...";
-        nIC.id = "imageContainer-empty";
-
-        parent.insertBefore(nIC, parent.firstChild);
+    if(imageOutput) {
+        let clear = document.getElementById("clear-ena");
+        clear.id = "clear-dis";
+        let context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
     }
 }

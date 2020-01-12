@@ -618,6 +618,7 @@
         zoomer.value = '1';
         zoomer.style.display = self.options.showZoomer ? '' : 'none';
         zoomer.setAttribute('aria-label', 'zoom');
+        wrap.hidden = true;
 
         self.element.appendChild(wrap);
         wrap.appendChild(zoomer);
