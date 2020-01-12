@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 let multer = require('multer');
 const db = require("./database/dbHandler.js");
 const url = "http://en.wikipedia.org/wiki/";
+const crypto = require('crypto');
+const mime = require('mime');
 
 var app = express();
 
@@ -15,7 +17,9 @@ let Storage = multer.diskStorage({
 		callback(null, './temp/');
 	},
 	filename: function(req, file, callback){
-		callback(null, file.originalname);
+		crypto.pseudoRandomBytes(16, function (err, raw) {
+			callback(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+		});
 	}
 });
 
@@ -67,8 +71,8 @@ app.post('/getResult', urlEncodedParser, function(req, res){
   res.send(pred);
 });
 
-app.post('/searchResult', upload.single("image"), function(req, res){
-	
+app.post('/searchResult', upload.single("image"), function(req, res, next){
+	res.status(200).send();
 })
 
 //listen for requests on port 80
