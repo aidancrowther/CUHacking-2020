@@ -97,8 +97,7 @@ app.post('/getResult', urlEncodedParser, function(req, res){
 });
 
 app.post('/searchResult', upload.single("image"), function(req, res, next){
-	let bf = getRandomOne();
-	let link = "http://en.wikipedia.org/wiki/" + butterflies[17];
+	let link = "http://en.wikipedia.org/wiki/" + butterflies[Math.round(Math.random() * 48)];
 	res.status(200).send(JSON.stringify({link:link}));
 })
 
