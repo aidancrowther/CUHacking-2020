@@ -41,19 +41,31 @@ app.get('/', function(req, res){
 });
 
 app.post('/getResult', urlEncodedParser, function(req, res){
+  //db.fill();
   /*
   let image = req.body['image'].map(Number);
   let imgTensor = tf.tensor(image, [1, 28, 28, 1]);
   let pred = butterflies[model.predict(imgTensor).dataSync()];
   */
 
-  let pred = butterflies[0];
-  search(pred);
+  // Just a lil testy bit
+  let butter = butterflies[40];
 
-  setTimeout(()=>{
-    console.log(retur);
-    res.send(retur);
-  }, 1000);
+  mongoClient.connect(url, (err, db) => {
+    if(err) {throw err;}
+
+    let dbo = db.db("bf")
+    let query = {"lname" : butter};
+
+    console.log("Querying");
+    dbo.collection("butterflies").findOne(query).then((result)=> {
+        db.close();
+        console.log(result);
+        res.send(result);
+    }).catch((err)=> {
+        console.log(err);
+    });
+  });
 });
 
 //listen for requests on port 80
@@ -92,5 +104,17 @@ function search(val) {
       }).catch((err)=> {
           console.log(err);
       });
+  });
+}
+
+async function search2(val) {
+  return mongoClient.connect(url).then((db)=> {
+    let query = {"lname" : val};
+    let dbo = db.db("bf")
+  
+    return dbo.collection("butterflies").findOne(query);
+  }).then(function(items) {
+    console.log(items);
+    return items;
   });
 }
