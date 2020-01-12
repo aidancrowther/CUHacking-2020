@@ -1,0 +1,290 @@
+[
+    {
+        "lname" : "epargyreus_clarus",
+        "ename" : "Silver Spotted Skipper",
+        "family" : "Hesperiidae",
+        "extra" : ""
+    },
+    {
+        "lname" : "limenitis_archippus",
+        "ename" : "Viceroy",
+        "family" : "Nymphalidae",
+        "extra" : ""
+    },
+    {
+        "lname" : "caligo_memnon",
+        "ename" : "Giant Owl",
+        "family" : "Nymphalidae",
+        "extra" : ""
+    },
+    {
+        "lname" : "ornithoptera_priamus",
+        "ename" : "Common Green Birdwig",
+        "family" : "Papilionidae",
+        "extra" : ""
+    },
+    {
+        "lname" : "kallima_inachus",
+        "ename" : "Orange Dead Leaf",
+        "family" : "Nymphalidae",
+        "extra" : ""
+    },
+    {
+        "lname" : "heliconius_ismenius",
+        "ename" : "Tiger Longwing",
+        "family" : "Nymphalidae",
+        "extra" : ""
+    },
+    {
+        "lname" : "heliconius_cydno",
+        "ename" : "Cydno Longwing",
+        "family" : "Nymphalidae",
+        "extra" : ""
+    },
+    {
+        "lname" : "danaus_plexippus" ,
+        "ename" : "Monarch Butterfly",
+        "family" : "Nymphalidae",
+        "extra" : ""
+    },
+    {
+        "lname" : "heliconius_hortense",
+        "ename" : "Mexican Longwing",
+        "family" : "Nymphalidae",
+        "extra" : ""
+    },
+    {
+        "lname" : "biblis_hyperia",
+        "ename" : "Red Rim",
+        "family" : "Nymphalidae",
+        "extra" : ""
+    },
+    {
+        "lname" : "euploea_modesta",
+        "ename" : "Plain Blue Crow",
+        "family" : "Nymphalidae",
+        "extra" : ""
+    },
+    {
+        "lname" : "graphium_agamemnon",
+        "ename" : "Tailed Jay",
+        "family" : "Papilionidae",
+        "extra" : ""
+    },
+    {
+        "lname" : "athyma_perius",
+        "ename" : "Common Sergeant",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "heliconius_hecale",
+        "ename" : "Hecale Longwing",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "siproeta_epaphus",
+        "ename" : "Rusty Tipped Page",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "junonia_lemonias",
+        "ename" : "Lemon Pansy",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "heliconius_charithonia",
+        "ename" : "Zebra Longwing",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "parthenos_sylvia",
+        "ename" : "Blue Clipper",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "caligo_eurilochus",
+        "ename" : "Forest Mort Blue",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "papilio_palinurus",
+        "ename" : "Banded Peacock",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "cethosia_cyane",
+        "ename" : "Leopard Lacewing",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "heliconius_erato",
+        "ename" : "Small Postman",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "nymphalis_vaualbum",
+        "ename" : "Compton Tortoiseshell",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "papilio_thoas",
+        "ename" : "Thoas Swallowtail",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "papilio_cresphontes",
+        "ename" : "Giant Swallowtail",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "papilio_polyxenes",
+        "ename" : "Black Swallowtail",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "parthenos_sylvia_brown",
+        "ename" : "Brown Clipper",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "boloria_selene",
+        "ename" : "Silver Bordered Fritillary",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "agraulis_vanillae",
+        "ename" : "Gulf Fritillary",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "limenitis_arthemis",
+        "ename" : "White Admiral",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "hamadryas_amphinome",
+        "ename" : "Red Cracker",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "heliconius_doris",
+        "ename" : "Doris Longwing",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "junonia_coenia",
+        "ename" : "Common Buckeye",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "morpho_peleides",
+        "ename" : "Blue Morpho",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "colias_interior",
+        "ename" : "Pink Edged Sulfur",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "satyrium_liparops",
+        "ename" : "Striped Hairstreak",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "phyciodes_tharos",
+        "ename" : "Pearl Crescent",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "lycaena_phlaeas",
+        "ename" : "American Copper",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "nymphalis_milberti",
+        "ename" : "Milberts Tortoiseshell",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "troides_helena",
+        "ename" : "Common Birdwing",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "colobura_dirce",
+        "ename" : "Mosaic",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "morpho_polyphemus" ,
+        "ename" : "White Morpho",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "papilio_dardanus",
+        "ename" : "Mocker Swalltail",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "danaus_chrysippus",
+        "ename" : "Plain Tiger",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "dryas_iulia",
+        "ename" : "Julia",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname": "dryadula_phaetusa",
+        "ename" : "Banded Orange Tiger",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "idea_leuconoe",
+        "ename" : "Rice Paper",
+        "family" : "",
+        "extra" : ""
+    },
+    {
+        "lname" : "anartia_jatrophae",
+        "ename" : "White Peacock",
+        "family" : "",
+        "extra" : ""
+    }
+]
