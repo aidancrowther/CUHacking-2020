@@ -9,6 +9,9 @@ const db = require("./database/dbHandler.js");
 const crypto = require('crypto');
 const mime = require('mime');
 const mongoClient = require('mongodb').MongoClient;
+const PNG = require('pngjs').PNG;
+const fs = require('fs')
+const getPixels = require('get-pixels');
 
 const url = "mongodb://localhost:27017/";
 
@@ -50,6 +53,8 @@ const PORT = 4000;
 
 let model;
 var retur;
+
+callMe();
 
 var urlEncodedParser = bodyParser.urlencoded({ extended: true });
 app.use(express.static('interface'));
@@ -102,19 +107,47 @@ app.listen(PORT, function(err){if(err) console.log(err)});
 
 (async function(){
 
-  model = await tf.loadModel(handler);
-  callMe();
+  //model = await tf.loadModel(handler);
+  //callMe();
 
 })();
 
 function callMe(){
 
-  /*
-  var imgTensor = tf.tensor(test, [1, 28, 28, 1]);
-  var pred = model.predict(imgTensor).dataSync();
-  console.log(pred);
+  let test = './test.png'
+
+  getPixels(test, function(err, pixels) {
+    if(err) {
+      console.log("Bad image path");
+      return;
+    }
+
+    r_t = []
+    g_t = []
+    b_t = []
+
+    for (let y = 0; y < pixels.shape[1]; y++) {
+      r = []
+      g = []
+      b = []
+      for (let x = 0; x < pixels.shape[0]; x++) {
+        r.push(pixels.get(x, y, 0)/255);
+        g.push(pixels.get(x, y, 1)/255);
+        b.push(pixels.get(x, y, 2)/255);
+      }
+      r_t.push(r)
+      g_t.push(g)
+      b_t.push(b)
+    }
+
+    img = [r_t, g_t, b_t];
+
+    console.log(img);
+  });
+  //var imgTensor = tf.tensor(test, [1, 400, 400, 3]);
+  //var pred = model.predict(imgTensor).dataSync();
+  //console.log(pred);
   console.log("done");
-  */
 
 }
 
