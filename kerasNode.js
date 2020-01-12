@@ -4,12 +4,32 @@ const handler = tfn.io.fileSystem("./model/model.json");
 const express = require('express');
 const wikijs = require('wikipediajs');
 var bodyParser = require('body-parser');
+let multer = require('multer');
 const db = require("./database/dbHandler.js");
+const url = "http://en.wikipedia.org/wiki/";
+const crypto = require('crypto');
+const mime = require('mime');
 const mongoClient = require('mongodb').MongoClient;
 
 const url = "mongodb://localhost:27017/";
 
 var app = express();
+
+let Storage = multer.diskStorage({
+	destination: function(req, file, callback){
+		callback(null, './temp/');
+	},
+	filename: function(req, file, callback){
+		crypto.pseudoRandomBytes(16, function (err, raw) {
+			callback(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+		});
+	}
+});
+
+let upload = multer({
+	storage: Storage
+});
+
 
 // We'll see if we need a database
 //const MongoClient = require('mongodb').MongoClient;
@@ -34,6 +54,10 @@ var retur;
 
 var urlEncodedParser = bodyParser.urlencoded({ extended: true });
 app.use(express.static('interface'));
+app.use(function(err, req, res, next) {
+	console.log('Invalid field: ', err.field);
+	next(err);
+})
 
 //respond to request for index.html
 app.get('/', function(req, res){
@@ -67,6 +91,10 @@ app.post('/getResult', urlEncodedParser, function(req, res){
     });
   });
 });
+
+app.post('/searchResult', upload.single("image"), function(req, res, next){
+	res.status(200).send();
+})
 
 //listen for requests on port 80
 app.listen(PORT, function(err){if(err) console.log(err)});
