@@ -9,6 +9,9 @@ const db = require("./database/dbHandler.js");
 const url = "http://en.wikipedia.org/wiki/";
 const crypto = require('crypto');
 const mime = require('mime');
+const mongoClient = require('mongodb').MongoClient;
+
+const url = "mongodb://localhost:27017/";
 
 var app = express();
 
@@ -47,6 +50,7 @@ const ROOT = './interface';
 const PORT = 4000;
 
 let model;
+var retur;
 
 var urlEncodedParser = bodyParser.urlencoded({ extended: true });
 app.use(express.static('interface'));
@@ -61,14 +65,31 @@ app.get('/', function(req, res){
 });
 
 app.post('/getResult', urlEncodedParser, function(req, res){
+  //db.fill();
+  /*
   let image = req.body['image'].map(Number);
   let imgTensor = tf.tensor(image, [1, 28, 28, 1]);
   let pred = butterflies[model.predict(imgTensor).dataSync()];
+  */
 
-  let result = db.search(pred);
-  result["summary"] = wikijs.search(`?url=http://en.wikipedia.org/wiki/${pred}`)
+  // Just a lil testy bit
+  let butter = butterflies[40];
 
-  res.send(pred);
+  mongoClient.connect(url, (err, db) => {
+    if(err) {throw err;}
+
+    let dbo = db.db("bf")
+    let query = {"lname" : butter};
+
+    console.log("Querying");
+    dbo.collection("butterflies").findOne(query).then((result)=> {
+        db.close();
+        console.log(result);
+        res.send(result);
+    }).catch((err)=> {
+        console.log(err);
+    });
+  });
 });
 
 app.post('/searchResult', upload.single("image"), function(req, res, next){
@@ -94,4 +115,34 @@ function callMe(){
   console.log("done");
   */
 
+}
+
+function search(val) {
+  mongoClient.connect(url, (err, db) => {
+      if(err) {throw err;}
+
+      let dbo = db.db("bf")
+      let query = {"lname" : val};
+
+      console.log("Querying");
+      dbo.collection("butterflies").findOne(query).then((result)=> {
+          db.close();
+          console.log(result);
+          retur = result;
+      }).catch((err)=> {
+          console.log(err);
+      });
+  });
+}
+
+async function search2(val) {
+  return mongoClient.connect(url).then((db)=> {
+    let query = {"lname" : val};
+    let dbo = db.db("bf")
+  
+    return dbo.collection("butterflies").findOne(query);
+  }).then(function(items) {
+    console.log(items);
+    return items;
+  });
 }

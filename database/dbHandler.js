@@ -3,8 +3,7 @@ const fs = require('fs');
 
 const url = "mongodb://localhost:27017/";
 
-let filled = false;
-
+// Fills out the butterfly db with data.JSON
 function fill() {
     mongoClient.connect(url, (err, db)=> {
         if(err) {throw err;}
@@ -13,30 +12,17 @@ function fill() {
             if(err) {throw err;}
             console.log("Collection made");
         });
-        let data = JSON.parse(fs.readFileSync('./data.JSON'));
+        let data = JSON.parse(fs.readFileSync('./database/data.JSON'));
         dbo.collection("butterflies").insertMany(data, (err, res) => {
             if(err) {throw err;}
             console.log("Added butterflies");
         });
-        db.close();
+        //db.close();
     });
     filled = true;
 }
 
-function search(val) {
-    if(!filled) {
-        fill();
-    }
 
-    mongoClient.connect(url, (err, db) => {
-        if(err) {throw err;}
-
-        let dbo = db.db("butterflies")
-        let query = {"name" : val};
-        dbo.find(query).toArray((err, result)=>{
-            if(err) {throw err;}
-            db.close();
-            return result;
-        });
-    });
+exports.fill = ()=>{
+    fill();
 }
