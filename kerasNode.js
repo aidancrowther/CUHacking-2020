@@ -3,8 +3,23 @@ const tfn = require("@tensorflow/tfjs-node");
 const handler = tfn.io.fileSystem("./model/model.json");
 const express = require('express');
 var bodyParser = require('body-parser');
+let multer = require('multer');
 
 var app = express();
+
+let Storage = multer.diskStorage({
+	destination: function(req, file, callback){
+		callback(null, './temp/');
+	},
+	filename: function(req, file, callback){
+		callback(null, file.originalname);
+	}
+});
+
+let upload = multer({
+	storage: Storage
+});
+
 
 // We'll see if we need a database
 //const MongoClient = require('mongodb').MongoClient;
@@ -28,6 +43,10 @@ let model;
 
 var urlEncodedParser = bodyParser.urlencoded({ extended: true });
 app.use(express.static('interface'));
+app.use(function(err, req, res, next) {
+	console.log('Invalid field: ', err.field);
+	next(err);
+})
 
 //respond to request for index.html
 app.get('/', function(req, res){
@@ -50,6 +69,10 @@ app.post('/getResult', urlEncodedParser, function(req, res){
     console.log(s);
   }
 });
+
+app.post('/searchResult', upload.single("image"), function(req, res){
+	
+})
 
 //listen for requests on port 80
 app.listen(PORT, function(err){if(err) console.log(err)});

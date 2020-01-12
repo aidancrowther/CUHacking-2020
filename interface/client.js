@@ -3,12 +3,27 @@ function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
-            $('#imageContainer').attr('src', e.target.result);
+            $('#imageContainer-empty').attr('src', e.target.result);
         }
   
         reader.readAsDataURL(input.files[0]);
+
+        let formData = new FormData();
+        formData.append("image", input.files[0]);
+        console.log(formData);
+
         $.ajax({
-            
+            url: 'http://localhost:4000/searchResult',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            successs: function() {
+                console.log('success');
+            },
+            error: function() {
+              console.log('error');
+            }
         })
     }
 }
@@ -16,21 +31,21 @@ function readURL(input) {
 $(document).ready(function() {      
     $("#imageField").change(function() {
         console.log("STARTING");
+        let clear = document.getElementById("clear-dis");
+        clear.id = "clear-ena";
         readURL(this);
     });
+    $("#clear-dis").click(function() {
+        clearImage();
+    })
 });
 
 function clearImage(e) {
-    if(e) {
-        e.preventDefault();
-    }
-
     let imageContainer = document.getElementById('imageContainer');
 
-    console.log(imageContainer);
-
     if(imageContainer) {
-        imageContainer.innerHTML = "";
+        imageContainer.innerHTML = '<img alt="Click here to upload..." id="imageContainer">';
+        imageContainer.id = "imageContainer";
     }
 }
 
