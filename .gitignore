@@ -1,1 +1,6 @@
 node_modules
+*.png
+scraper/train
+scraper/rivers
+scraper/chrome-win
+scraper/badData
