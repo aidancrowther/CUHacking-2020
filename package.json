@@ -8,7 +8,7 @@
     "body-parser": "^1.18.3",
     "croppie": "^2.6.4",
     "crypto": "^1.0.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "get-pixels": "^3.3.2",
     "jimp": "^0.9.3",
     "keras-js": "^1.0.3",
