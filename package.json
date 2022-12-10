@@ -5,10 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "@tensorflow/tfjs-node": "^0.2.3",
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "croppie": "^2.6.4",
     "crypto": "^1.0.1",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "get-pixels": "^3.3.2",
     "jimp": "^0.9.3",
     "keras-js": "^1.0.3",
